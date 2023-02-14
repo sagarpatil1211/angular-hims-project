@@ -25,9 +25,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/main.js"
+
+            ]
           },
           "configurations": {
             "production": {
