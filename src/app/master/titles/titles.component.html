@@ -13,14 +13,16 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form class="">
+                <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
                     <div class="position-relative form-group">
                         <label>Title<span class="text-danger">*</span></label>
-                        <input placeholder="Title" type="text" class="form-control">
-                        <em class="error text-danger small">Please enter your firstname</em>
+                        <input placeholder="Title" type="text" class="form-control" formControlName="name">
+                        <em class="error text-danger small"
+                            *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid">Please enter
+                            Title</em>
                     </div>
 
-                    <input type="submit" value="Save" class="mt-1 btn btn-primary">
+                    <input type="submit" [disabled]="formdata.invalid" value="Save" class="mt-1 btn btn-primary">
                 </form>
 
             </div>
@@ -36,20 +38,22 @@
                             <th style="width: 150px;">Action</th>
                             <th style="width: 80px;">No</th>
                             <th>Title</th>
-                         
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let data of titleData, let i = index">
                             <td class="text-center">
-                                
-                                <button class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i class="pe-7s-tools btn-icon-wrapper"> </i></button>
-                                <button class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+
+                                <button (click)="edit(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary"><i
+                                        class="pe-7s-tools btn-icon-wrapper"> </i></button>
+                                <button (click)="delete(data.id)" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-danger"><i
+                                        class="pe-7s-trash btn-icon-wrapper"> </i></button>
 
                             </td>
-                            <td class="text-right">1</td>
-                            <td>Mr</td>
-                          
+                            <td class="text-right"> {{ i+1 }} </td>
+                            <td> {{ data.name }} </td>
+
                         </tr>
                     </tbody>
 

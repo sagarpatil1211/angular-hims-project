@@ -6,6 +6,7 @@ import { LandingComponent } from './landing.component';
 import { StatesComponent } from './states/states.component';
 import { TalukasComponent } from './talukas/talukas.component';
 import { TitlesComponent } from './titles/titles.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path:'', component:LandingComponent, children:[
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path:'districts/:stateid', component:DistrictsComponent},
     {path:'talukas/:districtid', component:TalukasComponent},
     {path:'titles', component:TitlesComponent},
+    {path:'users', component:UsersComponent},
   ]}
 ];
 
